@@ -1,1 +1,16 @@
 # semilleroHBT
+
+Taller # 1
+1.	Instalar la dependencia Hibernate.
+2.	Terminar de mapear la entidad comic, y crear el enumerador Estado.,Ñ
+3.	Crear una clase CreacionComicTest en el cual contendrá lo siguiente:
+
+    3.1 Antes de ejecutar las pruebas unitarias, se deben crear 10 comics, haciendo uso de set o haciendo uso de constructores. Esos 10 comics se adicionaran a una lista y algunos deberán contener el estado activo y otros el estado inactivo (la cantidad que uds quieran).
+    3.2 Crear dos métodos privados, uno para verificar los comics que se encuentran activos y otro para verificar los comics inactivos, estos deberán retornar una lista con los activos e inactivos respectivamente.
+    3.3 Para el método de comics activos, se debe filtrar los que son activos haciendo uso del enumerador para comparar el estado y el método debe retornar una lista con solo los comics activos.
+    3.4 Adicional a esto se debe crear una prueba unitaria que permita comprobar que si se están listando solo comics en estado activo, hacer uso de la Clase System.out.println para imprimir todas las propiedades del comic y poderlas visualizar en consola.
+    
+4. Crear un nuevo método el cual debe generar una excepción indicando el siguiente mensaje “Se ha detectado que de ” + tamanioListaTotal + “ comics se encontraron que ” + numeroTotalActivos + “  se encuentran activos y ” + numeroTotalInactivos + “ inactivos. Los comics inactivos son: ” + nombresComicsInacivos.
+5. Realizar prueba unitaria para capturar el mensaje de error producido.
+
+NOTA: Importante documentar el código
