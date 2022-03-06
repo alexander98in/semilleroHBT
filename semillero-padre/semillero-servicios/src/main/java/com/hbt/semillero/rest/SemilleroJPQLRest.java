@@ -3,6 +3,7 @@
  */
 package com.hbt.semillero.rest;
 
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
@@ -24,10 +26,13 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
+
 import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.Comic;
 import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
+
+import com.hbt.semillero.entidades.Comic;
 
 /**
  * <b>Descripción:<b> Clase que determina
@@ -59,12 +64,11 @@ public class SemilleroJPQLRest {
 		List<Comic> listAllComics = null;
 		
 		try {
-			
 			// Obtencion de un registro de la tabla comic haciendo uso del metodo find de la clase EntityManager
 			// SELECT * FROM COMIC WHERE ID = 6;
 			comic = em.find(Comic.class, 6L);
 			LOG.info("DATA COMIC" + comic.toString());
-						
+			
 			//Consults en JPQL para obtener un comic con el id 6 pero quemado o hardcodeado haciendo uso del metodo getSingleResult
 			String consulta = "SELECT cm FROM Comic cm WHERE cm.id = 6 ";
 			Query queryUnComic = em.createQuery(consulta);
@@ -207,6 +211,7 @@ public class SemilleroJPQLRest {
 		}
 		
  		return listAllComics;
+
 	}
 
 }

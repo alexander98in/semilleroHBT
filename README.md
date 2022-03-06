@@ -14,6 +14,7 @@ Taller # 1
 5. Realizar prueba unitaria para capturar el mensaje de error producido.
 
 NOTA: Importante documentar el código
+<<<<<<< HEAD
 
 # Taller Servicios REST
 
@@ -43,3 +44,5 @@ DTO de salida
         "Dragon ball"
     ]
 }
+=======
+>>>>>>> 100baee21d3393fd92264f877d3589cf9eac181f

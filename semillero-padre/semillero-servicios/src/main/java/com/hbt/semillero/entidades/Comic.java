@@ -4,7 +4,9 @@
 package com.hbt.semillero.entidades;
 
 import java.io.Serializable;
+
 import java.math.BigDecimal;
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -21,8 +23,9 @@ import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
 
 
+
 /**
- * 
+ *
  * <b>Descripción:<b> Entidad que contiene la informacion de la tabla 
  * comic en la base de datos de semillero
  * <b>Caso de Uso:<b> SEMILLERO 2022
@@ -65,7 +68,7 @@ public class Comic implements Serializable {
 	
 	@Column(name="SCPRECIO", nullable=false)
 	private BigDecimal precio;
-	
+
 	@Column(name="SCAUTORES", length=50)
 	private String autores;
 	
@@ -195,6 +198,7 @@ public class Comic implements Serializable {
 	 * Metodo encargado de modificar el valor del atributo precio
 	 * @param precio El nuevo precio a modificar.
 	 */
+
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
@@ -267,6 +271,7 @@ public class Comic implements Serializable {
 	 * Metodo encargado de retornar el valor del atributo cantidad
 	 * @return El cantidad asociado a la clase
 	 */
+
 	public Long getCantidad() {
 		return cantidad;
 	}
@@ -278,7 +283,6 @@ public class Comic implements Serializable {
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
-
 	
 	/** 
 	 * @see java.lang.Object#toString()

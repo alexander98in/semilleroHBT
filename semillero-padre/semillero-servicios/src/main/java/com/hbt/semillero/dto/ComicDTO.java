@@ -5,6 +5,7 @@ package com.hbt.semillero.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import java.time.LocalDate;
 
 import com.hbt.semillero.enums.EstadoEnum;
@@ -17,6 +18,7 @@ import com.hbt.semillero.enums.TematicaEnum;
  * @author Leyder Alexander Inagan
  * @version 1.0
  */
+
 public class ComicDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -30,12 +32,14 @@ public class ComicDTO implements Serializable {
 	private TematicaEnum tematicaEnum;
 	private String coleccion;
 	private Integer numeroPaginas;
+
 	private BigDecimal precio;
+
 	private String autores;
 	private Boolean color;
 	private LocalDate fechaVenta;
 	private EstadoEnum estadoEnum;
-	private Long cantidad;
+    private Long cantidad;
 	
 	/**
 	 * Constructor de la clase.
@@ -174,6 +178,7 @@ public class ComicDTO implements Serializable {
 	 * @param precio El nuevo precio a modificar.
 	 */
 	public void setPrecio(BigDecimal precio) {
+
 		this.precio = precio;
 	}
 	/**
@@ -236,7 +241,9 @@ public class ComicDTO implements Serializable {
 	 * Metodo encargado de retornar el valor del atributo cantidad
 	 * @return El cantidad asociado a la clase
 	 */
+
 	public Long getCantidad() {
+
 		return cantidad;
 	}
 	/**
@@ -244,6 +251,7 @@ public class ComicDTO implements Serializable {
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
 	public void setCantidad(Long cantidad) {
+
 		this.cantidad = cantidad;
 	}
 
