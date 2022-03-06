@@ -23,6 +23,10 @@ public class ResultadoDTO implements Serializable {
 	 * Atributo que determina el response si fue exitoso o no
 	 */
 	private String mensajeEjecucion;
+	
+	public ResultadoDTO() {
+		// Constructor vacio
+	}
 
 	/**
 	 * 
@@ -31,8 +35,6 @@ public class ResultadoDTO implements Serializable {
 	 * @param mensajeEjecucion Atributo que determina el response si fue exitoso o no
 	 */
 	public ResultadoDTO(boolean exitoso, String mensajeEjecucion) {
-		//Estoy heredando el constructor de la clase x
-		super();
 		//Se asigna el valor 
 		this.exitoso = exitoso;
 		this.mensajeEjecucion = mensajeEjecucion;

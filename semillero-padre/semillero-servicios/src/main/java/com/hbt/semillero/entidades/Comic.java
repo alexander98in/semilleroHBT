@@ -4,6 +4,7 @@
 package com.hbt.semillero.entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -19,20 +20,14 @@ import javax.persistence.Table;
 import com.hbt.semillero.enums.EstadoEnum;
 import com.hbt.semillero.enums.TematicaEnum;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
- * <b>DescripciÃ³n:<b> Entidad que contiene la informacion de la tabla
+ * 
+ * <b>Descripción:<b> Entidad que contiene la informacion de la tabla 
  * comic en la base de datos de semillero
- * <b>Caso de Uso:<b> SEMILLERO2022
- * @author MIPC
- * @version 
+ * <b>Caso de Uso:<b> SEMILLERO 2022
+ * @author Leyder Alexander Inagan
+ * @version 1.0
  */
 @Entity
 @Table(name="COMIC")
@@ -68,8 +63,8 @@ public class Comic implements Serializable {
 	@Column(name="SCNUMEROPAGINAS", nullable=false, length=5)
 	private Integer numeroPaginas;
 	
-	@Column(name="SDPRECIO", nullable=false)
-	private Integer precio;
+	@Column(name="SCPRECIO", nullable=false)
+	private BigDecimal precio;
 	
 	@Column(name="SCAUTORES", length=50)
 	private String autores;
@@ -85,10 +80,11 @@ public class Comic implements Serializable {
 	private LocalDate fechaVenta;
 	
 	@Column(name="SCESTADO", length=50)
+	@Enumerated(value= EnumType.STRING)
 	private EstadoEnum estadoEnum;
 	
 	@Column(name="SCCANTIDAD", nullable=false, length=3)
-	private Integer cantidad;
+	private Long cantidad;
 
 	
 	/**
@@ -191,7 +187,7 @@ public class Comic implements Serializable {
 	 * Metodo encargado de retornar el valor del atributo precio
 	 * @return El precio asociado a la clase
 	 */
-	public Integer getPrecio() {
+	public BigDecimal getPrecio() {
 		return precio;
 	}
 
@@ -199,7 +195,7 @@ public class Comic implements Serializable {
 	 * Metodo encargado de modificar el valor del atributo precio
 	 * @param precio El nuevo precio a modificar.
 	 */
-	public void setPrecio(Integer precio) {
+	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
 
@@ -271,7 +267,7 @@ public class Comic implements Serializable {
 	 * Metodo encargado de retornar el valor del atributo cantidad
 	 * @return El cantidad asociado a la clase
 	 */
-	public Integer getCantidad() {
+	public Long getCantidad() {
 		return cantidad;
 	}
 
@@ -279,18 +275,11 @@ public class Comic implements Serializable {
 	 * Metodo encargado de modificar el valor del atributo cantidad
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	/**
-	 * Metodo encargado de retornar el valor del atributo serialVersionUID
-	 * @return El serialversionuid asociado a la clase
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	
 	/** 
 	 * @see java.lang.Object#toString()
 	 */

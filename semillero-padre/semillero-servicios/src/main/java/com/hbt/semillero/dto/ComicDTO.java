@@ -3,6 +3,8 @@
  */
 package com.hbt.semillero.dto;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.hbt.semillero.enums.EstadoEnum;
@@ -15,7 +17,9 @@ import com.hbt.semillero.enums.TematicaEnum;
  * @author Leyder Alexander Inagan
  * @version 1.0
  */
-public class ComicDTO {
+public class ComicDTO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Declaracion de los atributos de la clase ComicDTO
@@ -26,12 +30,12 @@ public class ComicDTO {
 	private TematicaEnum tematicaEnum;
 	private String coleccion;
 	private Integer numeroPaginas;
-	private Integer precio;
+	private BigDecimal precio;
 	private String autores;
 	private Boolean color;
 	private LocalDate fechaVenta;
 	private EstadoEnum estadoEnum;
-	private Integer cantidad;
+	private Long cantidad;
 	
 	/**
 	 * Constructor de la clase.
@@ -57,8 +61,8 @@ public class ComicDTO {
 	 * @param cantidad
 	 */
 	public ComicDTO(Long id, String nombre, String editorial, TematicaEnum tematicaEnum, String coleccion,
-			Integer numeroPaginas, Integer precio, String autores, Boolean color, LocalDate fechaVenta,
-			EstadoEnum estadoEnum, Integer cantidad) {
+			Integer numeroPaginas, BigDecimal precio, String autores, Boolean color, LocalDate fechaVenta,
+			EstadoEnum estadoEnum, Long cantidad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -162,14 +166,14 @@ public class ComicDTO {
 	 * Metodo encargado de retornar el valor del atributo precio
 	 * @return El precio asociado a la clase
 	 */
-	public Integer getPrecio() {
+	public BigDecimal getPrecio() {
 		return precio;
 	}
 	/**
 	 * Metodo encargado de modificar el valor del atributo precio
 	 * @param precio El nuevo precio a modificar.
 	 */
-	public void setPrecio(Integer precio) {
+	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
 	/**
@@ -232,14 +236,14 @@ public class ComicDTO {
 	 * Metodo encargado de retornar el valor del atributo cantidad
 	 * @return El cantidad asociado a la clase
 	 */
-	public Integer getCantidad() {
+	public Long getCantidad() {
 		return cantidad;
 	}
 	/**
 	 * Metodo encargado de modificar el valor del atributo cantidad
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
 
