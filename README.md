@@ -43,3 +43,36 @@ DTO de salida
         "Dragon ball"
     ]
 }
+
+# Taller FINAL
+
+TALLER FINAL
+
+BACK-END
+Desarrollar un (1) servicio que permita realizar la compra de un comic, teniendo en cuenta las siguientes características.
+-	Se debe crear las clases que administre aparte la compra del comic, se puede llamar GestionarCompraComicRest, GestionarCompraComicBean, IGestionarCompraComic.
+
+-	Si al momento de realizar la compra del comic, este se encuentra en estado INACTIVO, se debe generar una excepción indicando en un mensaje “El comic seleccionado no cuenta con stock en bodega”.
+
+-	Cuando la cantidad ingresada para la compra del comic no supera el stock o cantidad existente se debe actualizar el registro, agregando la fecha de venta, descontado la cantidad ingresada y el registro permanecerá en estado ACTIVO, esto generará una compra exitosa.
+
+-	Si al momento de comprar un comic la cantidad comprada es la misma del stock existente se debe actualizar el registro a estado INACTIVO, actualizar la fecha de venta y descontar la cantidad comprada, que para este caso seria 0, esto generara una compra exitosa.
+
+-	Cuando la cantidad comprada por un comic supera el stock existente, se debe generar una excepción indicando el siguiente mensaje “La cantidad existente del comic es:  numeroComics, y supera la ingresada”.
+
+-	Si la compra es exitosa el mensaje será: “La compra del comic nombreComic fue exitosa”.
+
+
+FRONT-END
+-	Adicionar una nueva opción en la columna acciones que permita realizar la compra del comic, del componente gestionar comic.
+-	Al momento de hacer clic en este icono, debe direccionar a un componente nuevo que gestionara la compra, y se le debe enviar la información del registro o comic seleccionado de la tabla.
+-	El componente que gestionara la compra del comic deberá contener dos campos, uno indicando el nombre del comic seleccionado y otro donde se ingrese la información de la cantidad a comprar, por último la acción de comprar comic, y otra acción para cancelar la compra.
+-	El botón de comprar invocara el servicio de comprar comic y el botón de cancelar regresara a la pantalla de gestionar comic.
+-	El formulario deberá validar la obligatoriedad del campo cantidad, este debe ser ingresado y debe ser superior a 0.
+
+-	Se debe administrar en un componente de alertas los posibles mensajes que lanzara el servicio, si es exitosa la compra, debe direccionar a la pantalla de gestionar comic y deberá aparecer una alerta de color azul indicando el mensaje de éxito que lanza el servicio.
+
+Si el mensaje no es exitoso, deberá permanecer en el componente que gestiona la compra y lanzar el mensaje en una alerta roja indicando el mensaje fallido que lanza el servicio.
+
+Para las alertas usar el componente de boostrap.
+ 
