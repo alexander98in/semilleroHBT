@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 /**
  * @description Componente menu, el cual contiene la logica para direccionar a los modulos
  * desarrollados
@@ -8,7 +7,7 @@ import { Router } from '@angular/router';
  * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
  */
 @Component({
-  selector: 'home-page',
+  selector: 'menu-page',
   templateUrl: './menu-component.html',
 })
 export class MenuComponent implements OnInit {
@@ -41,10 +40,10 @@ export class MenuComponent implements OnInit {
    * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
    */
   public navegarHome(): void {
-    this.router.navigate(['bienvenida']);
+    this.router.navigate(['./bienvenida']);
   }
 
   public navegarGestionarCompra(): void {
-    //WIP
+    this.router.navigate(['./gestionar-compra']);
   }
 }

@@ -5,8 +5,11 @@ package com.hbt.semillero.interfaces;
 
 import javax.ejb.Local;
 
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.dto.ConsultaNombrePrecioComicDTO;
+import com.hbt.semillero.dto.ConsultarComicsDTO;
 import com.hbt.semillero.dto.ConsultarTamanioNombreComicDTO;
+import com.hbt.semillero.dto.ResultadoDTO;
 
 /**
  * <b>Descripción:<b> Interface que determina
@@ -30,4 +33,8 @@ public interface IGestionarComicLocal {
 	 * @return Nombre de los comics con una longitud mayor al parametro
 	 */
 	public ConsultarTamanioNombreComicDTO consultarComicTamanioNombre(Short lengthComic);
+	
+	public ResultadoDTO crearComic(ComicDTO comicDTO) throws Exception;
+	
+	public ConsultarComicsDTO consultarComics();
 }

@@ -19,8 +19,12 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.dto.ConsultaNombrePrecioComicDTO;
+import com.hbt.semillero.dto.ConsultarComicsDTO;
 import com.hbt.semillero.dto.ConsultarTamanioNombreComicDTO;
+import com.hbt.semillero.entidades.Comic;
+import com.hbt.semillero.dto.ResultadoDTO;
 import com.hbt.semillero.interfaces.IGestionarComicLocal;
 
 /**
@@ -157,12 +161,98 @@ public class GestionarComicBean implements IGestionarComicLocal {
 		return consultaTamanioNombres;
 	}
 	
+	
+	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public ResultadoDTO crearComic(ComicDTO comicDTO) throws Exception {
+		
+		if(comicDTO.getNombre() == null) {
+			throw new Exception("El campo nombre es requerido");
+		}
+		
+		Comic comic = this.convertirComicDTOToComic(comicDTO);
+		em.persist(comic);
+		
+		ResultadoDTO resultadoDTO = new ResultadoDTO();
+		resultadoDTO.setExitoso(true);
+		resultadoDTO.setMensajeEjecucion("El comic ha sido creado exitosamente");
+		return resultadoDTO;
+	}
+	
+	private Comic convertirComicDTOToComic(ComicDTO comicDTO) {
+		Comic comic = new Comic();
+		comic.setId(comicDTO.getId());
+		comic.setNombre(comicDTO.getNombre());
+		comic.setEditorial(comicDTO.getEditorial());
+		comic.setTematicaEnum(comicDTO.getTematicaEnum());
+		comic.setColeccion(comicDTO.getColeccion());
+		comic.setNumeroPaginas(comicDTO.getNumeroPaginas());
+		comic.setPrecio(comicDTO.getPrecio());
+		comic.setAutores(comicDTO.getAutores());
+		comic.setColor(comicDTO.getColor());
+		comic.setFechaVenta(comicDTO.getFechaVenta());
+		comic.setEstadoEnum(comicDTO.getEstadoEnum());
+		comic.setCantidad(comicDTO.getCantidad());
+		return comic;
+	}
 
+
+	@Override
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	@SuppressWarnings("unchecked")
+	public ConsultarComicsDTO consultarComics() {
+		LOG.info("Inicia ejecución de consultarNombrePrecioComic()");
+		ConsultaNombrePrecioComicDTO consultaNombrePrecio = new ConsultaNombrePrecioComicDTO();
+		ConsultarComicsDTO consultaComics = new ConsultarComicsDTO();
+		String consultaDeComics = "SELECT cm FROM Comic cm";
+		
+		
+		
+		try {
+			Query queryConsultaComics = em.createQuery(consultaDeComics);
+			
+			List<ComicDTO> listResult= queryConsultaComics.getResultList();
+			
+			if(listResult.isEmpty()) {
+				consultaComics.setMensajeEjecucion("No hay comics registrados");
+			} else {
+				consultaComics.setMensajeEjecucion("Si hay comics registrados");
+				consultaComics.setListaComics(listResult);
+				LOG.info("rESULTADO:" + listResult);
+			}
 	
-	
-	
-	
-	
+			consultaNombrePrecio.setExitoso(true);
+			
+			
+		} catch(NonUniqueResultException nure) {
+			LOG.error(MESSAGE_ERROR + nure.getMessage());
+			consultaNombrePrecio.setExitoso(false);
+			consultaNombrePrecio.setMensajeEjecucion("Se encontro mas de un registro");
+			
+		} catch(NoResultException nre) {
+			LOG.error(MESSAGE_ERROR + nre.getMessage());
+			consultaNombrePrecio.setExitoso(false);
+			consultaNombrePrecio.setMensajeEjecucion("La consulta no arrojo resultados");
+			
+		} catch(Exception e) {
+			LOG.error(MESSAGE_ERROR + e.getMessage());
+			consultaNombrePrecio.setExitoso(false);
+			consultaNombrePrecio.setMensajeEjecucion("Se ha presentado un error tecnico");
+		}
+		
+//		List<ConsultaNombrePrecioComicDTO> listaResult = queryNombrePrecio.getResultList();
+//		
+//		if(!listaResult.isEmpty()) {
+//			String nombre = listaResult.get(0).getNombre();
+//			BigDecimal precio = listaResult.get(0).getPrecio();
+//			consultaNombrePrecio = new ConsultaNombrePrecioComicDTO(true, "Se ha consultado exitosamente", nombre, precio);
+//		} else {
+//			consultaNombrePrecio = new ConsultaNombrePrecioComicDTO(true, "La consulta no arrogo resultados", null, null);
+//		}
+		
+		LOG.info("Finaliza ejecución de consultarNombrePrecioComic()");
+		return consultaComics;
+	}
 	
 	
 	

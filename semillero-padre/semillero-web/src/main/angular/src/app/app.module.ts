@@ -9,6 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './semillero/componentes/menu/menu-component';
+import { BienvenidaComponent } from './semillero/componentes/home/bienvenida-component';
+import { RouterModule } from '@angular/router';
+import { CrearPersonaComponent } from './semillero/componentes/crear-persona/crear-persona.component';
+import { GestionarComicComponent } from './semillero/componentes/gestionar-comic/gestionar-comic.component';
+import { GestionarCompraComponent } from './semillero/componentes/gestionar-compra/gestionar-compra.component';
 /* import { GestionarComicComponent } from './semillero/componentes/gestionarComic/gestionar-comic';
  */
 // DTOs
@@ -18,7 +23,10 @@ export { ResultadoDTO } from './semillero/dto/resultado.dto'; */
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent, 
+    BienvenidaComponent, 
+    CrearPersonaComponent, 
+    GestionarComicComponent, GestionarCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,8 @@ export { ResultadoDTO } from './semillero/dto/resultado.dto'; */
     HttpModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
   	{ provide: APP_BASE_HREF, useValue: '/SemilleroHBT' }
